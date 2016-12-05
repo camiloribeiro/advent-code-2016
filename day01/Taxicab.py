@@ -21,11 +21,8 @@ class Taxicab:
     def get_parsed_instructions(self, instructions):
         parsed_instructions = list()
         for instruction in instructions.split(","):
-            parsed_instructions.append(self.parse_instruction(instruction))
+            parsed_instructions.append([instruction.strip()[0], int(instruction.strip()[1:])])
         return parsed_instructions
-
-    def parse_instruction(self, instruction):
-        return [instruction.strip()[0], int(instruction.strip()[1:])]
 
     def get_direction(self, current_towards, direction):
         if current_towards == "N":
