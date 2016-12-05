@@ -1,7 +1,14 @@
 class Taxicab:
 
+
     def get_distance(self, directions):
-        return directions
+        distance = {'N': 0, 'S': 0, 'E': 0, 'W': 0}
+        towards = "N"
+        instructions = self.get_parsed_instructions(directions)
+        for instruction in instructions:
+            towards = self.get_direction(towards, instruction[0])
+            distance[towards] += instruction[1]
+        return(max([distance['N'], distance['S']]) - min([distance['N'], distance['S']])) + (max([distance['E'], distance['W']]) - min([distance['E'], distance['W']]))
 
     def get_parsed_instructions(self, instructions):
         parsed_instructions = list()
