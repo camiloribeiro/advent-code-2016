@@ -20,7 +20,9 @@ class Taxicab:
                 x = distance['N'] - distance['S']
                 y = distance['W'] - distance['E']
                 if [x, y] in visited:
-                    return abs(y + x)
+                    x2 = max([distance['N'], distance['S']]) - min([distance['N'], distance['S']])
+                    y2 = max([distance['W'], distance['E']]) - min([distance['W'], distance['E']])
+                    return abs(y2 + x2)
                 else:
                     visited.append([x, y])
 
