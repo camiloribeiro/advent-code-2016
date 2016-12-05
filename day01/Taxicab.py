@@ -25,11 +25,11 @@ class Taxicab:
                 return "W"
         if current_towards == "E":
             if direction == "L":
-                return "S"
-            if direction == "R":
                 return "N"
+            if direction == "R":
+                return "S"
         if current_towards == "W":
             if direction == "L":
-                return "N"
-            if direction == "R":
                 return "S"
+            if direction == "R":
+                return "N"
