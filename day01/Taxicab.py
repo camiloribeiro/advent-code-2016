@@ -1,7 +1,7 @@
 class Taxicab:
 
     def get_distance(self, instructions):
-        distance = {'N': 0, 'S': 0, 'E': 0, 'W': 0}
+        towards, visited, distance = "N", [[0, 0]], {'N': 0, 'S': 0, 'E': 0, 'W': 0}
         directions = {'NL': 'W',
                       'SL': 'E',
                       'EL': 'N',
@@ -10,23 +10,17 @@ class Taxicab:
                       'SR': 'W',
                       'ER': 'S',
                       'WR': 'N'}
-        towards = "N"
-        visited = [[0, 0]]
-        parsed_instructions = self.parse_instructions(instructions)
-        for instruction in parsed_instructions:
+        for instruction in self.parse_instructions(instructions):
             towards = directions[towards + instruction[0]]
             for x in range(distance[towards], distance[towards] + instruction[1]):
                 distance[towards] += 1
-                x = distance['N'] - distance['S']
-                y = distance['W'] - distance['E']
+                x, y = distance['N'] - distance['S'], distance['W'] - distance['E']
                 if [x, y] in visited:
                     return abs(x + y)
-                else:
-                    visited.append([x, y])
+                visited.append([x, y])
 
     def parse_instructions(self, instructions):
         parsed_instructions = list()
         for instruction in instructions.split(","):
             parsed_instructions.append([instruction.strip()[0], int(instruction.strip()[1:])])
         return parsed_instructions
-
