@@ -4,4 +4,4 @@ class Taxicab:
         return directions
 
     def parse_instruction(self, instruction):
-        return [instruction[0], int(instruction[1:])]
+        return [instruction.strip()[0], int(instruction.strip()[1:])]
