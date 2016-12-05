@@ -21,5 +21,16 @@ class TaxicabTest(unittest.TestCase):
         self.assertEquals(taxicab.parse_instruction("   L3 "), ["L", 3])
         self.assertEquals(taxicab.parse_instruction("N22 "), ["N", 22])
 
+    def test_get_direction(self):
+        taxicab = Taxicab()
+        self.assertEquals(taxicab.get_direction("N", "R"), "E")
+        self.assertEquals(taxicab.get_direction("N", "L"), "W")
+        self.assertEquals(taxicab.get_direction("W", "R"), "S")
+        self.assertEquals(taxicab.get_direction("W", "L"), "N")
+        self.assertEquals(taxicab.get_direction("E", "R"), "N")
+        self.assertEquals(taxicab.get_direction("E", "L"), "S")
+        self.assertEquals(taxicab.get_direction("S", "R"), "W")
+        self.assertEquals(taxicab.get_direction("S", "L"), "E")
+
 if __name__ == '__main__':
     unittest.main()
