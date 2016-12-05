@@ -1,6 +1,5 @@
 class Taxicab:
 
-
     def get_distance(self, directions):
         distance = {'N': 0, 'S': 0, 'E': 0, 'W': 0}
         towards = "N"
@@ -25,23 +24,12 @@ class Taxicab:
         return parsed_instructions
 
     def get_direction(self, current_towards, direction):
-        if current_towards == "N":
-            if direction == "L":
-                return "W"
-            if direction == "R":
-                return "E"
-        if current_towards == "S":
-            if direction == "L":
-                return "E"
-            if direction == "R":
-                return "W"
-        if current_towards == "E":
-            if direction == "L":
-                return "N"
-            if direction == "R":
-                return "S"
-        if current_towards == "W":
-            if direction == "L":
-                return "S"
-            if direction == "R":
-                return "N"
+        options = {'NL': 'W',
+                   'SL': 'E',
+                   'EL': 'N',
+                   'WL': 'S',
+                   'NR': 'E',
+                   'SR': 'W',
+                   'ER': 'S',
+                   'WR': 'N'}
+        return options[current_towards + direction]
