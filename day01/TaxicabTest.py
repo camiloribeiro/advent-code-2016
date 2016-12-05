@@ -5,9 +5,7 @@ from Taxicab import Taxicab
 class TaxicabTest(unittest.TestCase):
     def test_get_to_headquarters(self):
         taxicab = Taxicab()
-        self.assertEquals(taxicab.get_distance("R2, L3"), 5)
-        self.assertEquals(taxicab.get_distance("R2, R2, R2"), 2)
-        self.assertEquals(taxicab.get_distance("R5, L5, R5, R3"), 12)
+        self.assertEquals(taxicab.get_distance("R8, R4, R4, R8"), 4)
 
     def test_get_instructions_parsed(self):
         taxicab = Taxicab()
