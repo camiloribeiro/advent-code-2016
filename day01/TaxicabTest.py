@@ -6,6 +6,9 @@ class TaxicabTest(unittest.TestCase):
     def test_get_to_headquarters(self):
         taxicab = Taxicab()
         self.assertEquals(taxicab.get_distance("R8, R4, R4, R8"), 4)
+        self.assertEquals(taxicab.get_distance("R2, R2, R2, R8"), 0)
+        self.assertEquals(taxicab.get_distance("R10, R2, R2, R8"), 8)
+        self.assertEquals(taxicab.get_distance("R10, R2, R2, R1, R2"), 11)
 
     def test_get_instructions_parsed(self):
         taxicab = Taxicab()
