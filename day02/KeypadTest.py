@@ -4,6 +4,14 @@ from Keypad import Keypad
 
 class KeypadTest(unittest.TestCase):
 
+    def test_find_passcode(self):
+        keypad = Keypad()
+        instructions = "ULL\n" + \
+                       "RRDDD\n" + \
+                       "LURDL\n" + \
+                       "UUUUD"
+        self.assertEquals(keypad.find_passcode(instructions), "1985")
+
     def test_read_instruction(self):
         keypad = Keypad()
         self.assertEquals(keypad.read_instruction("5", "U"), "2")
