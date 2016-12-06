@@ -2,14 +2,8 @@ class Taxicab:
 
     def get_distance(self, instructions):
         towards, visited, distance = "N", [[0, 0]], {'N': 0, 'S': 0, 'E': 0, 'W': 0}
-        directions = {'NL': 'W',
-                      'SL': 'E',
-                      'EL': 'N',
-                      'WL': 'S',
-                      'NR': 'E',
-                      'SR': 'W',
-                      'ER': 'S',
-                      'WR': 'N'}
+        directions = {'NL': 'W', 'SL': 'E', 'EL': 'N', 'WL': 'S',
+                      'NR': 'E', 'SR': 'W', 'ER': 'S','WR': 'N'}
         for instruction in self.parse_instructions(instructions):
             towards = directions[towards + instruction[0]]
             for x in range(distance[towards], distance[towards] + instruction[1]):
