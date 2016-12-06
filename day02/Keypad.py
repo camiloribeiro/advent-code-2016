@@ -1,26 +1,23 @@
 class Keypad:
 
-    def __init__(self, keypad_instructions):
-        self.directions = keypad_instructions
-
-    def find_passcode(self, instructions):
+    def find_passcode(self, layout, instructions):
         code = []
         for instruction in instructions.split("\n"):
             try:
-                code.append(self.read_instruction(code[-1], instruction))
+                code.append(self.read_instruction(layout, code[-1], instruction))
             except IndexError:
-                code.append(self.read_instruction("5", instruction))
+                code.append(self.read_instruction(layout, "5", instruction))
         return ''.join(map(str, code))
 
-    def read_instruction(self, current, instructions):
+    def read_instruction(self, layout, current, instructions):
         if not instructions:
             return current
         else:
             return self.read_instruction(
-               self.get_position(current, list(instructions)[0]), instructions[1:])
+               layout, self.get_position(layout, current, list(instructions)[0]), instructions[1:])
 
-    def get_position(self, current, instruction):
+    def get_position(self, layout, current, instruction):
         try:
-            return self.directions[current + instruction]
+            return layout[current + instruction]
         except KeyError:
             return current

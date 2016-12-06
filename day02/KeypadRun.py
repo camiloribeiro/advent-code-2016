@@ -30,8 +30,6 @@ layout2 = {'5R': '6',
            'BD': 'D', 'BU': '7', 'BL': 'A', 'BR': 'C',
            '7D': 'B', '7U': '3', '7L': '6', '7R': '8'}
 
-keypad = Keypad(layout1)
-print(keypad.find_passcode(instructions))  # answer 82958
-
-keypad = Keypad(layout2)
-print(keypad.find_passcode(instructions))  # answer B3DB8
+keypad = Keypad()
+print(keypad.find_passcode(layout1, instructions))  # answer 82958
+print(keypad.find_passcode(layout2, instructions))  # answer B3DB8
