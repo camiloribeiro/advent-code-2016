@@ -6,7 +6,11 @@ class KeypadTest(unittest.TestCase):
 
     def test_read_instruction(self):
         keypad = Keypad()
-        self.assertEquals(keypad.read_instruction("U"), "U")
+        self.assertEquals(keypad.read_instruction("5", "U"), "2")
+        self.assertEquals(keypad.read_instruction("5", "ULL"), "1")
+        self.assertEquals(keypad.read_instruction("1", "RRDDD"), "9")
+        self.assertEquals(keypad.read_instruction("9", "LURDL"), "8")
+        self.assertEquals(keypad.read_instruction("8", "UUUUD"), "5")
 
     def test_get_position(self):
         keypad = Keypad()
