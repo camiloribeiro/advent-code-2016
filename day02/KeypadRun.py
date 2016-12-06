@@ -16,5 +16,22 @@ layout1 = {'5U': '2', '5D': '8', '5L': '4', '5R': '6',
            '7U': '4', '7R': '8',
            '9U': '6', '9L': '8'}
 
+layout2 = {'5R': '6',
+           '1D': '3',
+           '9L': '8',
+           'DU': 'B',
+           '2R': '3', '2D': '6',
+           '4L': '3', '4D': '8',
+           'AR': 'B', 'AU': '6',
+           'CL': 'B', 'CU': '8',
+           '3D': '7', '3U': '1', '3L': '2', '3R': '4',
+           '8D': 'C', '8U': '4', '8L': '7', '8R': '9',
+           '6D': 'A', '6U': '2', '6L': '5', '6R': '7',
+           'BD': 'D', 'BU': '7', 'BL': 'A', 'BR': 'C',
+           '7D': 'B', '7U': '3', '7L': '6', '7R': '8'}
+
 keypad = Keypad(layout1)
 print(keypad.find_passcode(instructions))  # answer 82958
+
+keypad = Keypad(layout2)
+print(keypad.find_passcode(instructions))  # answer B3DB8

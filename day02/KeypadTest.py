@@ -14,6 +14,20 @@ class KeypadTest(unittest.TestCase):
                '7U': '4', '7R': '8',
                '9U': '6', '9L': '8'}
 
+    layout2 = {'5R': '6',
+               '1D': '3',
+               '9L': '8',
+               'DU': 'B',
+               '2R': '3', '2D': '6',
+               '4L': '3', '4D': '8',
+               'AR': 'B', 'AU': '6',
+               'CL': 'B', 'CU': '8',
+               '3D': '7', '3U': '1', '3L': '2', '3R': '4',
+               '8D': 'C', '8U': '4', '8L': '7', '8R': '9',
+               '6D': 'A', '6U': '2', '6L': '5', '6R': '7',
+               'BD': 'D', 'BU': '7', 'BL': 'A', 'BR': 'C',
+               '7D': 'B', '7U': '3', '7L': '6', '7R': '8'}
+
     def test_find_passcode(self):
         keypad = Keypad(self.layout1)
 
@@ -22,6 +36,9 @@ class KeypadTest(unittest.TestCase):
                        "LURDL\n" + \
                        "UUUUD"
         self.assertEquals(keypad.find_passcode(instructions), "1985")
+
+        keypad = Keypad(self.layout2)
+        self.assertEquals(keypad.find_passcode(instructions), "5DB3")
 
     def test_read_instruction(self):
         keypad = Keypad(self.layout1)
@@ -32,7 +49,15 @@ class KeypadTest(unittest.TestCase):
         self.assertEquals(keypad.read_instruction("9", "LURDL"), "8")
         self.assertEquals(keypad.read_instruction("8", "UUUUD"), "5")
 
-    def test_get_position(self):
+        keypad = Keypad(self.layout2)
+
+        self.assertEquals(keypad.read_instruction("5", "U"), "5")
+        self.assertEquals(keypad.read_instruction("5", "ULL"), "5")
+        self.assertEquals(keypad.read_instruction("5", "RRDDD"), "D")
+        self.assertEquals(keypad.read_instruction("D", "LURDL"), "B")
+        self.assertEquals(keypad.read_instruction("3", "UUUUD"), "3")
+
+    def test_get_position_layout_1(self):
 
         keypad = Keypad(self.layout1)
 
@@ -40,7 +65,7 @@ class KeypadTest(unittest.TestCase):
         self.assertEquals(keypad.get_position("1", "D"), "4")
         self.assertEquals(keypad.get_position("1", "L"), "1")
         self.assertEquals(keypad.get_position("1", "R"), "2")
-        
+
         self.assertEquals(keypad.get_position("2", "U"), "2")
         self.assertEquals(keypad.get_position("2", "D"), "5")
         self.assertEquals(keypad.get_position("2", "L"), "1")
