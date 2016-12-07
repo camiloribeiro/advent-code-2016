@@ -1995,3 +1995,4 @@ data = "  566  477  376 \n" + \
 
 three_sides = ThreeSides()
 print(three_sides.get_valid_triangles(data))
+print(three_sides.get_valid_triangles_by_column(data))

@@ -7,6 +7,7 @@ class ThreeSidesTest(unittest.TestCase):
     def test_is_triangle(self):
         # My blog post from 2010 http://www.bugbang.com.br/uma-introducao-a-tdd-com-junit/
         three_sides = ThreeSides()
+        self.assertEquals(three_sides.is_a_valid_triangle([101, 102, 103]), True)
         self.assertEquals(three_sides.is_a_valid_triangle([3, 4, 5]), True)
         self.assertEquals(three_sides.is_a_valid_triangle([5, 10, 25]), False)
         self.assertEquals(three_sides.is_a_valid_triangle([2, 9, 10]), True)
@@ -42,6 +43,15 @@ class ThreeSidesTest(unittest.TestCase):
                                                           "   0     0    0\n" +
                                                           "   5    12    6\n" +
                                                           "  12    5    6"), 6)
+
+    def test_get_number_of_valid_triangles_by_columns(self):
+        three_sides = ThreeSides()
+        self.assertEquals(three_sides.get_valid_triangles_by_column("101 301 501\n" +
+                                                                    "102 302 502\n" +
+                                                                    "103 303 503\n" +
+                                                                    "201 401 601\n" +
+                                                                    "202 402 602\n" +
+                                                                    "203 403 603"), 6)
 
 if __name__ == '__main__':
     unittest.main()
