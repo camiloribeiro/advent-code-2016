@@ -17,8 +17,8 @@ class ThreeSides:
             c1.append(int(x))
             c2.append(int(y))
             c3.append(int(z.strip()))
-        atad = c1 + c2 + c3
-        candidates = [atad[i:i + 3] for i in range(0, len(atad), 3)]
+        dimensions = c1 + c2 + c3
+        candidates = [dimensions[i:i + 3] for i in range(0, len(dimensions), 3)]
         for candidate in candidates:
             if self.is_a_valid_triangle(candidate):
                     triangles += 1
