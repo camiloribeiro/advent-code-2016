@@ -11,8 +11,7 @@ class ThreeSides:
         return triangles
 
     def get_valid_triangles_by_column(self, data):
-        triangles = 0
-        c1, c2, c3 = [], [], []
+        triangles, c1, c2, c3 = 0, [], [], []
         for line in data.strip().split("\n"):
             x, y, z = line.strip().split()
             c1.append(int(x))
