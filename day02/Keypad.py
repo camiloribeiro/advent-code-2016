@@ -13,11 +13,4 @@ class Keypad:
         if not instructions:
             return current
         else:
-            return self.read_instruction(
-               layout, self.get_position(layout, current, list(instructions)[0]), instructions[1:])
-
-    def get_position(self, layout, current, instruction):
-        try:
-            return layout[current + instruction]
-        except KeyError:
-            return current
+            return self.read_instruction(layout, layout.get(current + list(instructions)[0], current), instructions[1:])
