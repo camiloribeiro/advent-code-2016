@@ -1,4 +1,4 @@
 class Decoy:
 
     def parse_room(self, room):
-        return ["room", "checksum"]
+        return room.replace(']', '').rsplit("[", 1)
