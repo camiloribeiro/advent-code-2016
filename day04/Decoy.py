@@ -10,3 +10,10 @@ class Decoy:
         if ''.join([v[0] for v in sorted(d.iteritems(), key=lambda(k, v): (-v, k))][:5]) == room[1]:
             return int(sector_id)
         return False
+
+    def get_valid_rooms_in_given_sector(self, data, sector):
+        rooms_on_given_sector = 0
+        for room in data.split("\n"):
+            if self.check_checksum(self.parse_room(room)) == sector:
+                rooms_on_given_sector += 1
+        return rooms_on_given_sector

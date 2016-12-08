@@ -15,5 +15,15 @@ class DecoyTest(unittest.TestCase):
         self.assertEquals(decoy.check_checksum(["not-a-real-room-404", "oarel"]), 404)
         self.assertEquals(decoy.check_checksum(["totally-real-room-200", "decoy"]), False)
 
+    def test_get_valid_rooms_in_given_sector(self):
+        decoy = Decoy()
+        data = "aaaaa-bbb-z-y-x-123[abxyz]\n" + \
+               "a-b-c-d-e-f-g-h-987[abcde]\n" + \
+               "aaaaa-bbb-z-y-x-123[abxyz]\n" + \
+               "not-a-real-room-404[oarel]\n" + \
+               "totally-real-room-200[decoy]"
+        self.assertEquals(decoy.get_valid_rooms_in_given_sector(data, 123), 2)
+
+
 if __name__ == '__main__':
     unittest.main()
