@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/camiloribeiro/advent-code-2016.svg?branch=master)](https://travis-ci.org/camiloribeiro/advent-code-2016)
+
 # advent-code-2016
 
 Hello there. Those are my solutions using python, the language I am learning to love. Nothing special here.
