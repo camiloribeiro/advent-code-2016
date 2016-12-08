@@ -11,9 +11,8 @@ class Decoy:
             return int(sector_id)
         return False
 
-    def get_valid_rooms_in_given_sector(self, data, sector):
-        rooms_on_given_sector = 0
+    def get_total_sectors(self, data):
+        total_sector = 0
         for room in data.split("\n"):
-            if self.check_checksum(self.parse_room(room)) == sector:
-                rooms_on_given_sector += 1
-        return rooms_on_given_sector
+            total_sector += self.check_checksum(self.parse_room(room))
+        return total_sector
