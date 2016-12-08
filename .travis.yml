@@ -6,9 +6,9 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
- env:
-   - DAY=day01
-   - DAY=day02
-   - DAY=day03
-   - DAY=day04
+env:
+  - DAY=day01
+  - DAY=day02
+  - DAY=day03
+  - DAY=day04
 script: cd $DAY && python 
