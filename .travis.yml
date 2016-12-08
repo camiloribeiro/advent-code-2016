@@ -11,4 +11,4 @@ env:
   - DAY=day02
   - DAY=day03
   - DAY=day04
-script: cd $DAY && python 
+script: cd $DAY && python *Test.py
