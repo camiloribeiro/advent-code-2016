@@ -16,3 +16,13 @@ class Decoy:
         for room in data.split("\n"):
             total_sector += self.check_checksum(self.parse_room(room))
         return total_sector
+
+    def decode_room(self, data):
+        name = []
+        room, sector = data.rsplit("-", 1)
+        for letter in list(room.replace("-", " ")):
+            current = (ord(letter)) + (int(sector) % 26)
+            if current > 122:
+                current = current - 26
+            name.append(chr(current))
+        return ''.join(name).replace('%', ' ')

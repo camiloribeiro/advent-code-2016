@@ -23,6 +23,10 @@ class DecoyTest(unittest.TestCase):
                "totally-real-room-200[decoy]"
         self.assertEquals(decoy.get_total_sectors(data), 1514)
 
+    def test_decode_room(self):
+        decoy = Decoy()
+        data = "qzmt-zixmtkozy-ivhz-343"
+        self.assertEquals(decoy.decode_room(data), "very encrypted name")
 
 if __name__ == '__main__':
     unittest.main()
