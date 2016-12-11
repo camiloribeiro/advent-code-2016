@@ -8,14 +8,20 @@ class Decoy:
         valid_elements = [x for x in list(elements) if x not in list("0123456789-")]
         d = {i: valid_elements.count(i) for i in valid_elements}
         if ''.join([v[0] for v in sorted(d.iteritems(), key=lambda(k, v): (-v, k))][:5]) == room[1]:
-            return int(sector_id)
-        return False
+            return [int(sector_id), elements]
+        return [0]
 
     def get_total_sectors(self, data):
         total_sector = 0
         for room in data.split("\n"):
-            total_sector += self.check_checksum(self.parse_room(room))
+            total_sector += self.check_checksum(self.parse_room(room))[0]
         return total_sector
+
+    def get_all_valid_rooms(self, data):
+        rooms = []
+        for room in data.split("\n"):
+            rooms.append(self.check_checksum(self.parse_room(room)))
+        return filter(lambda a: a != [0], rooms)
 
     def decode_room(self, data):
         name = []
