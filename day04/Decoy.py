@@ -30,10 +30,12 @@ class Decoy:
 
     def decode_room(self, data):
         name = []
-        room, sector = data[1], data[0]
-        for letter in list(room.replace("-", " ")):
-            current = (ord(letter)) + (int(sector) % 26)
-            if current > 122:
-                current = current - 26
-            name.append(chr(current))
-        return ''.join(name).replace('%', ' ')
+        for letter in list(data[1]):
+            if letter != "-":
+                current = (ord(letter)) + (int(data[0]) % 26)
+                if current > 122:
+                    current = current - 26
+                name.append(chr(current))
+            else:
+                name.append(" ")
+        return ''.join(name)
