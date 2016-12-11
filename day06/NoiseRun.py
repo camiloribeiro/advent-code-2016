@@ -599,5 +599,6 @@ data = "uzmnhwye\n" + \
        "rtxkcevq\n" + \
        "qythgaev\n" + \
        "lnhqdrzc"
-print(noise.get_most_repeated_char(data))
+print(noise.get_message_with_most_repeated(data))
+print(noise.get_message_with_least_repeated(data))
 
