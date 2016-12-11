@@ -24,7 +24,7 @@ class Decoy:
         return filter(lambda a: a != [0], rooms)
 
     def get_room_with_given_name(self, data, expected_room):
-        for room in data:
+        for room in self.get_all_valid_rooms(data):
             if self.decode_room(room) == expected_room:
                 return room[0]
 

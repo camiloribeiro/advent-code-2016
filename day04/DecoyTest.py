@@ -38,10 +38,11 @@ class DecoyTest(unittest.TestCase):
 
     def test_get_room_with_given_name(self):
         decoy = Decoy()
-        data = [[123, 'aaaaa-bbb-z-y-x'],
-                [987, 'a-b-c-d-e-f-g-h'],
-                [343, "qzmt-zixmtkozy-ivhz"],
-                [404, 'not-a-real-room']]
+        data = "aaaaa-bbb-z-y-x-123[abxyz]\n" + \
+               "a-b-c-d-e-f-g-h-987[abcde]\n" + \
+               "not-a-real-room-404[oarel]\n" + \
+               "totally-real-room-200[decoy]\n" + \
+               "qzmt-zixmtkozy-ivhz-343[zimth]"
         self.assertEquals(decoy.get_room_with_given_name(data, "very encrypted name"), 343)
 
     def test_decode_room(self):

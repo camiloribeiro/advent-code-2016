@@ -939,4 +939,5 @@ data = "vxupkizork-sgmtkzoi-pkrrehkgt-zxgototm-644[kotgr]\n" + \
        "shoewudys-tou-ixyffydw-478[uszty]"
 
 print(decoy.get_total_sectors(data)) # 137896
+print(decoy.get_room_with_given_name(data, "northpole object storage")) # 137896
 
