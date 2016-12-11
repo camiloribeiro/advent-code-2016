@@ -22,7 +22,7 @@ class NoiseTest(unittest.TestCase):
                "vrdear\n" + \
                "dvrsen\n" + \
                "enarar"
-        self.assertEquals(noise.get_message_with_most_repeated(data), "easter")
+        self.assertEquals(noise.get_message(data, 0), "easter")
 
     def test_get_message_with_least_repeated(self):
         noise = Noise()
@@ -42,7 +42,7 @@ class NoiseTest(unittest.TestCase):
                "vrdear\n" + \
                "dvrsen\n" + \
                "enarar"
-        self.assertEquals(noise.get_message_with_least_repeated(data), "advent")
+        self.assertEquals(noise.get_message(data, -1), "advent")
 
 if __name__ == '__main__':
     unittest.main()
