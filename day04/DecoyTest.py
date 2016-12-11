@@ -36,9 +36,17 @@ class DecoyTest(unittest.TestCase):
 
         self.assertEquals(decoy.get_all_valid_rooms(data), valid_rooms)
 
+    def test_get_room_with_given_name(self):
+        decoy = Decoy()
+        data = [[123, 'aaaaa-bbb-z-y-x'],
+                [987, 'a-b-c-d-e-f-g-h'],
+                [343, "qzmt-zixmtkozy-ivhz"],
+                [404, 'not-a-real-room']]
+        self.assertEquals(decoy.get_room_with_given_name(data, "very encrypted name"), 343)
+
     def test_decode_room(self):
         decoy = Decoy()
-        data = "qzmt-zixmtkozy-ivhz-343"
+        data = [343, "qzmt-zixmtkozy-ivhz"]
         self.assertEquals(decoy.decode_room(data), "very encrypted name")
 
 if __name__ == '__main__':

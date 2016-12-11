@@ -23,9 +23,14 @@ class Decoy:
             rooms.append(self.check_checksum(self.parse_room(room)))
         return filter(lambda a: a != [0], rooms)
 
+    def get_room_with_given_name(self, data, expected_room):
+        for room in data:
+            if self.decode_room(room) == expected_room:
+                return room[0]
+
     def decode_room(self, data):
         name = []
-        room, sector = data.rsplit("-", 1)
+        room, sector = data[1], data[0]
         for letter in list(room.replace("-", " ")):
             current = (ord(letter)) + (int(sector) % 26)
             if current > 122:
