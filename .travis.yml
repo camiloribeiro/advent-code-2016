@@ -6,4 +6,5 @@ env:
   - DAY=day02
   - DAY=day03
   - DAY=day04
+  - DAY=day05
 script: cd $DAY && python *Test.py
