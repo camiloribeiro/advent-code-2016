@@ -6,7 +6,11 @@ class ChessTest(unittest.TestCase):
 
     def test_get_password(self):
         chess = Chess()
-        self.assertEquals(chess.get_key_for_character("abc"), "18f47a30")
+        self.assertEquals(chess.get_simple_password("abc"), "18f47a30")
+
+    def test_get_enhanced_password(self):
+        chess = Chess()
+        self.assertEquals(chess.get_enhanced_password("abc"), "05ace8e3")
 
 if __name__ == '__main__':
     unittest.main()
