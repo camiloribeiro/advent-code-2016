@@ -1,11 +1,9 @@
 language: python
 python:
   - "2.7"
-env:
-  - DAY=day01
-  - DAY=day02
-  - DAY=day03
-  - DAY=day04
-  - DAY=day05
-  - DAY=day06
-script: cd $DAY && python *Test.py
+install: 
+  - "pip install -r requirements.txt"
+  - pip install coveralls
+script: coverage-2.7 run TestRunner.py
+after_success:
+  coveralls
