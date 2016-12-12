@@ -1,5 +1,11 @@
 [![Build Status](https://travis-ci.org/camiloribeiro/advent-code-2016.svg?branch=master)](https://travis-ci.org/camiloribeiro/advent-code-2016)
 
+[![Code Climate](https://codeclimate.com/github/camiloribeiro/advent-code-2016/badges/gpa.svg)](https://codeclimate.com/github/camiloribeiro/advent-code-2016)
+
+[![Test Coverage](https://codeclimate.com/github/camiloribeiro/advent-code-2016/badges/coverage.svg)](https://codeclimate.com/github/camiloribeiro/advent-code-2016/coverage)
+
+[![Issue Count](https://codeclimate.com/github/camiloribeiro/advent-code-2016/badges/issue_count.svg)](https://codeclimate.com/github/camiloribeiro/advent-code-2016)
+
 # advent-code-2016
 
 Hello there. Those are my solutions using python, the language I am learning to love. Nothing special here.
