@@ -43,6 +43,3 @@ class NoiseTest(unittest.TestCase):
                "dvrsen\n" + \
                "enarar"
         self.assertEquals(noise.get_message(data, -1), "advent")
-
-if __name__ == '__main__':
-    unittest.main()

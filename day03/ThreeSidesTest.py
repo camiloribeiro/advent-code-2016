@@ -52,6 +52,3 @@ class ThreeSidesTest(unittest.TestCase):
                                                                     "201 401 601\n" +
                                                                     "202 402 602\n" +
                                                                     "203 403 603"), 6)
-
-if __name__ == '__main__':
-    unittest.main()

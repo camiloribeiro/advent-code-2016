@@ -52,6 +52,3 @@ class KeypadTest(unittest.TestCase):
         self.assertEquals(keypad.read_instruction(self.layout2, "5", "RRDDD"), "D")
         self.assertEquals(keypad.read_instruction(self.layout2, "D", "LURDL"), "B")
         self.assertEquals(keypad.read_instruction(self.layout2, "3", "UUUUD"), "3")
-
-if __name__ == '__main__':
-    unittest.main()

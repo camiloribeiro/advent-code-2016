@@ -49,6 +49,3 @@ class DecoyTest(unittest.TestCase):
         decoy = Decoy()
         data = [343, "qzmt-zixmtkozy-ivhz"]
         self.assertEquals(decoy.decode_room(data), "very encrypted name")
-
-if __name__ == '__main__':
-    unittest.main()

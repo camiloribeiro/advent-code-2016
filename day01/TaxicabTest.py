@@ -22,6 +22,3 @@ class TaxicabTest(unittest.TestCase):
         self.assertEquals(taxicab.parse_instructions("R2, L3"), [["R", 2], ["L", 3]])
         self.assertEquals(taxicab.parse_instructions("R2, R2, R2"), [["R", 2], ["R", 2], ["R", 2]])
         self.assertEquals(taxicab.parse_instructions("R5, L5, R5, R3"), [["R", 5], ["L", 5], ["R", 5], ["R", 3]])
-
-if __name__ == '__main__':
-    unittest.main()
