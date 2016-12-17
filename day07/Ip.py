@@ -1,10 +1,13 @@
 class Ip:
 
     def parse(self, ip):
-        return [ip[0:4], ip[5:9], ip[10:14]]
+        return [ip.split("[")[0], ip.split("[")[-1].split("]")[0], ip.split("]")[-1]]
 
-    def check_abba(self, fragment):
-        return fragment[0] == fragment[-1] and fragment[1] == fragment[2]
+    def check_abba(self, ip):
+        for i in range(0, len(ip) - 3):
+            if (ip[i] == ip[i + 3] and ip[i + 1] == ip[i + 2] and ip[i + 0] != ip[i + 1]):
+                return True
+        return False
 
     def support_tls(self, ip):
         parsed_ip = self.parse(ip)
