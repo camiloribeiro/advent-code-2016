@@ -25,3 +25,9 @@ class IpTest(unittest.TestCase):
         self.assertEquals(ip.support_tls("abcd[bddb]xyyx"), False)
         self.assertEquals(ip.support_tls("aaaa[qwer]tyui"), False)
         self.assertEquals(ip.support_tls("ioxxoj[asdfgh]zxcvbn"), True)
+
+    def test_count_tls_ips(self):
+        ip = Ip()
+        data = "abba[mnop]qrst\nabcd[bddb]xyyx\n" + \
+               "aaaa[qwer]tyui\nioxxoj[asdfgh]zxcvbn"
+        self.assertEquals(ip.count_tls_ips(data), 2)
