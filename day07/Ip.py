@@ -15,7 +15,6 @@ class Ip:
                 return True
         return False
 
-
     def check_aba(self, ip):
         for i in range(0, len(ip) - 2):
             if (ip[i] == ip[i + 2] and ip[i] != ip[i + 1]):
