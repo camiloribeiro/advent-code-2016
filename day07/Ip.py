@@ -1,8 +1,13 @@
 class Ip:
 
-
-    def parse(self, ip):
-        return [ip.split("[")[0], ip.split("[")[-1].split("]")[0], ip.split("]")[-1]]
+    def parse(self, ip, out, ins):
+        if "[" not in ip:
+            ins.append(ip),
+            return [ins, out]
+        else:
+            ins.append(ip[ip.find(""):ip.find("[")])
+            out.append(ip[ip.find("[")+1:ip.find("]")])
+            return self.parse(ip.split(']', 1)[-1], out, ins)
 
     def check_abba(self, ip):
         for i in range(0, len(ip) - 3):
@@ -11,8 +16,8 @@ class Ip:
         return False
 
     def support_tls(self, ip):
-        parsed_ip = self.parse(ip)
-        return (self.check_abba(parsed_ip[0]) or self.check_abba(parsed_ip[2]) and not self.check_abba(parsed_ip[1]))
+        ips = self.parse(ip,  [], [])
+        return (any(self.check_abba(ip) for ip in ips[0])) and not (any(self.check_abba(ip) for ip in ips[1]))
 
     def count_tls_ips(self, ips):
         tls_count = 0

@@ -4,10 +4,13 @@ from Ip import Ip
 
 class IpTest(unittest.TestCase):
 
-    def test_ip_parser(self):
+    def test_ip_parser_complex(self):
         ip = Ip()
-        self.assertEquals(ip.parse("abba[mnop]qrst"), ["abba", "mnop", "qrst"])
-        self.assertEquals(ip.parse("ioxxoj[asdfgh]zxcvbn"), ["ioxxoj", "asdfgh", "zxcvbn"])
+        self.assertEquals(ip.parse("abba[mnop]qrst", [], []), [["abba", "qrst"], ["mnop"]])
+        self.assertEquals(ip.parse("abcd[bddb]xyyx", [], []), [["abcd", "xyyx"], ["bddb"]])
+        self.assertEquals(ip.parse("aaaa[qwer]tyui", [], []), [["aaaa", "tyui"], ["qwer"]])
+        self.assertEquals(ip.parse("ioxxoj[asdfgh]zxcvbn", [], []), [["ioxxoj", "zxcvbn"], ["asdfgh"]])
+        self.assertEquals(ip.parse("acca[qwer]qrst[tyui]xxsd", [], []), [["acca", "qrst", "xxsd"], ["qwer", "tyui"]])
 
     def test_abba(self):
         ip = Ip()
@@ -25,6 +28,7 @@ class IpTest(unittest.TestCase):
         self.assertEquals(ip.support_tls("abcd[bddb]xyyx"), False)
         self.assertEquals(ip.support_tls("aaaa[qwer]tyui"), False)
         self.assertEquals(ip.support_tls("ioxxoj[asdfgh]zxcvbn"), True)
+        self.assertEquals(ip.support_tls("ioxxoj[asdfgh]zxcvbn[abba]asdggf"), False)
 
     def test_count_tls_ips(self):
         ip = Ip()
