@@ -22,6 +22,15 @@ class IpTest(unittest.TestCase):
         self.assertEquals(ip.check_abba("ioxxoj"), True)
         self.assertEquals(ip.check_abba("hgfedcabbacdefgh"), True)
 
+    def test_aba(self):
+        ip = Ip()
+        self.assertEquals(ip.check_aba("aba"), True)
+        self.assertEquals(ip.check_aba("abb"), False)
+        self.assertEquals(ip.check_aba("aaa"), False)
+        self.assertEquals(ip.check_aba("cabcac"), True)
+        self.assertEquals(ip.check_aba("ioxooj"), True)
+        self.assertEquals(ip.check_aba("hgfedcababcdefgh"), True)
+
     def test_support_tls(self):
         ip = Ip()
         self.assertEquals(ip.support_tls("abba[mnop]qrst"), True)
