@@ -24,12 +24,18 @@ class IpTest(unittest.TestCase):
 
     def test_aba(self):
         ip = Ip()
-        self.assertEquals(ip.check_aba("aba"), True)
-        self.assertEquals(ip.check_aba("abb"), False)
-        self.assertEquals(ip.check_aba("aaa"), False)
-        self.assertEquals(ip.check_aba("cabcac"), True)
-        self.assertEquals(ip.check_aba("ioxooj"), True)
-        self.assertEquals(ip.check_aba("hgfedcababcdefgh"), True)
+        self.assertEquals(ip.check_aba(["aba", "asd"]), ["aba"])
+        self.assertEquals(ip.check_aba(["abb", "asdd"]), [])
+        self.assertEquals(ip.check_aba(["aaa"]), [])
+        self.assertEquals(ip.check_aba(["cabcac"]), ["cac"])
+        self.assertEquals(ip.check_aba(["ioxooj"]), ["oxo"])
+        self.assertEquals(ip.check_aba(["hgfedcababcdefgh", "caci"]), ["aba", "bab", "cac"])
+
+    def test_bab(self):
+        ip = Ip()
+        self.assertEquals(ip.check_bab(["bab"], ["aba"]), True)
+        self.assertEquals(ip.check_bab(["bas", "foo", "bab"], ["aba"]), True)
+        self.assertEquals(ip.check_bab(["bab"], ["abs", "asd", "aba"]), True)
 
     def test_support_tls(self):
         ip = Ip()
@@ -39,8 +45,25 @@ class IpTest(unittest.TestCase):
         self.assertEquals(ip.support_tls("ioxxoj[asdfgh]zxcvbn"), True)
         self.assertEquals(ip.support_tls("ioxxoj[asdfgh]zxcvbn[abba]asdggf"), False)
 
+    def test_support_ssl(self):
+        ip = Ip()
+        self.assertEquals(ip.support_ssl("aba[bab]xyz"), True)
+        self.assertEquals(ip.support_ssl("xyx[xyx]xyx"), False)
+        self.assertEquals(ip.support_ssl("aaa[kek]eke"), True)
+        self.assertEquals(ip.support_ssl("zazbz[bzb]cdb"), True)
+
     def test_count_tls_ips(self):
         ip = Ip()
         data = "abba[mnop]qrst\nabcd[bddb]xyyx\n" + \
                "aaaa[qwer]tyui\nioxxoj[asdfgh]zxcvbn"
         self.assertEquals(ip.count_tls_ips(data), 2)
+
+    def test_count_ssl_ips(self):
+        ip = Ip()
+        data = "aba[bab]xyz\n" + \
+               "aaaabaaaaaa[sad]xyz[asd]qwe[babababaab]ababababababadasdd\n" + \
+               "aaa[sad]xyz[asd]qwe[ababa]aababa\n" + \
+               "xyx[xyx]xyx\n" + \
+               "aaa[kek]eke\n" + \
+               "zazbz[bzb]cdb"
+        self.assertEquals(ip.count_ssl_ips(data), 5)
