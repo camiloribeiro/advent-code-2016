@@ -11,3 +11,12 @@ class Tfa:
             for col in range(0, w):
                 display[row][col] = 1
         return display
+
+    def rotate_col(self, col, shift, display):
+        temp = []
+        for row in range(0, len(display)):
+            temp.append(display[row][col])
+        temp = temp[shift:]+temp[:shift]
+        for row in range(0, len(display)):
+            display[row][col] = temp[row]
+        return display
