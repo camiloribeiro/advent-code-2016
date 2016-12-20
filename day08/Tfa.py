@@ -7,3 +7,9 @@ class Tfa:
             for col in range(len(display[0])):
                 total += display[row][col]
         return total
+
+    def react(self, h, w, display):
+        for row in range(0, h):
+            for col in range(0, w):
+                display[row][col] = 1
+        return display
