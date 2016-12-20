@@ -4,5 +4,7 @@ from Tfa import Tfa
 
 class TfaTest(unittest.TestCase):
 
-    def foo(self):
-        self.assertEqual(True, True)
+    def test_lighted_elements(self):
+        tfa = Tfa()
+        self.assertEqual(tfa.lighted_elements(), 0)
+
