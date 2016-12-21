@@ -49,6 +49,7 @@ class IpTest(unittest.TestCase):
         ip = Ip()
         self.assertEquals(ip.support_ssl("aba[bab]xyz"), True)
         self.assertEquals(ip.support_ssl("xyx[xyx]xyx"), False)
+        self.assertEquals(ip.support_ssl("xya[xyx]xya"), False)
         self.assertEquals(ip.support_ssl("aaa[kek]eke"), True)
         self.assertEquals(ip.support_ssl("zazbz[bzb]cdb"), True)
 
