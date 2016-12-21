@@ -22,3 +22,5 @@ Hello there. Those are my solutions using python, the language I am learning to 
    [Day 6: Signals and Noise](http://adventofcode.com/2016/day/6)
 
    [Day 7: Internet Protocol Version 7](http://adventofcode.com/2016/day/7)
+
+   [Day 8: Two-Factor Authentication](http://adventofcode.com/2016/day/8)
