@@ -16,7 +16,11 @@ class Tfa:
         temp = []
         for row in range(0, len(display)):
             temp.append(display[row][col])
-        temp = temp[shift:]+temp[:shift]
+        temp = temp[-shift:]+temp[:-shift]
         for row in range(0, len(display)):
             display[row][col] = temp[row]
+        return display
+
+    def rotate_row(self, row, shift, display):
+        display[row] = display[row][-shift:]+display[row][:-shift]
         return display
