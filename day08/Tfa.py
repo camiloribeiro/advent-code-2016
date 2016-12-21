@@ -8,6 +8,8 @@ class Tfa:
         for row in range(len(display)):
             for col in range(len(display[0])):
                 lighted += display[row][col]
+        for line in display:
+            print(line)
         return lighted
 
     def rect(self, hw, display):
