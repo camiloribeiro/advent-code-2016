@@ -1,3 +1,6 @@
+import re
+
+
 class Tfa:
     def lighted_elements(self):
         display, lighted = [[0 for x in range(50)] for y in range(8)], 0
@@ -6,9 +9,9 @@ class Tfa:
                 lighted += display[row][col]
         return lighted
 
-    def react(self, h, w, display):
-        for row in range(0, h):
-            for col in range(0, w):
+    def rect(self, hw, display):
+        for row in range(0, hw[0]):
+            for col in range(0, hw[1]):
                 display[row][col] = 1
         return display
 
@@ -23,4 +26,14 @@ class Tfa:
 
     def rotate_row(self, row, shift, display):
         display[row] = display[row][-shift:]+display[row][:-shift]
+        return display
+
+    def parse_input(self, data, display):
+        for line in data.split("\n"):
+            if "rect " in line:
+                display = self.rect([int(s) for s in re.findall(r'\d+', line)], display)
+            if "rotate row " in line:
+                print(re.findall(r'\d+', line))
+            if "rotate column " in line:
+                print(re.kindall(r'\d+', line))
         return display
