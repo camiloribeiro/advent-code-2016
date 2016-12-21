@@ -15,13 +15,13 @@ class Tfa:
                 display[row][col] = 1
         return display
 
-    def rotate_col(self, col, shift, display):
+    def rotate_col(self, shift, display):
         temp = []
         for row in range(0, len(display)):
-            temp.append(display[row][col])
-        temp = temp[-shift:]+temp[:-shift]
+            temp.append(display[row][shift[0]])
+        temp = temp[-shift[1]:]+temp[:-shift[1]]
         for row in range(0, len(display)):
-            display[row][col] = temp[row]
+            display[row][shift[0]] = temp[row]
         return display
 
     def rotate_row(self, row, shift, display):
@@ -35,5 +35,5 @@ class Tfa:
             if "rotate row " in line:
                 print(re.findall(r'\d+', line))
             if "rotate column " in line:
-                print(re.kindall(r'\d+', line))
+                display = self.rotate_col([int(s) for s in re.findall(r'\d+', line)], display)
         return display
