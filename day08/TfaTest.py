@@ -36,9 +36,9 @@ class TfaTest(unittest.TestCase):
         display = [[0 for x in range(7)] for y in range(3)]
         display = tfa.rect([2, 3], display)
         display = tfa.rotate_col([1, 1], display)
-        self.assertItemsEqual(tfa.rotate_row(0, 4, display), [[0, 0, 0, 0, 1, 0, 1],
-                                                              [1, 1, 1, 0, 0, 0, 0],
-                                                              [0, 1, 0, 0, 0, 0, 0]])
+        self.assertItemsEqual(tfa.rotate_row([0, 4], display), [[0, 0, 0, 0, 1, 0, 1],
+                                                                [1, 1, 1, 0, 0, 0, 0],
+                                                                [0, 1, 0, 0, 0, 0, 0]])
 
     def test_parse_input_rect(self):
         tfa = Tfa()
@@ -52,15 +52,17 @@ class TfaTest(unittest.TestCase):
         tfa = Tfa()
         display = [[0 for x in range(7)] for y in range(3)]
         data = "rect 2x3\n" + \
-              "rotate column x=1 by 1"
+               "rotate column x=1 by 1"
         self.assertEquals(tfa.parse_input(data, display), [[1, 0, 1, 0, 0, 0, 0],
                                                            [1, 1, 1, 0, 0, 0, 0],
                                                            [0, 1, 0, 0, 0, 0, 0]])
-#
-#    def test_parse_input_row(self):
-#        tfa = Tfa()
-#        display = [[0 for x in range(7)] for y in range(3)]
-#        data = "rect 2x3"
-#        self.assertEquals(tfa.parse_input(data, display), [[1, 1, 1, 0, 0, 0, 0],
-#                                                           [1, 1, 1, 0, 0, 0, 0],
-#                                                           [0, 0, 0, 0, 0, 0, 0]])
+
+    def test_parse_input_row(self):
+        tfa = Tfa()
+        display = [[0 for x in range(7)] for y in range(3)]
+        data = "rect 2x3\n" + \
+               "rotate column x=1 by 1\n" + \
+               "rotate row y=0 by 4"
+        self.assertEquals(tfa.parse_input(data, display), [[0, 0, 0, 0, 1, 0, 1],
+                                                           [1, 1, 1, 0, 0, 0, 0],
+                                                           [0, 1, 0, 0, 0, 0, 0]])

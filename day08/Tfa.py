@@ -24,16 +24,16 @@ class Tfa:
             display[row][shift[0]] = temp[row]
         return display
 
-    def rotate_row(self, row, shift, display):
-        display[row] = display[row][-shift:]+display[row][:-shift]
+    def rotate_row(self, shift, display):
+        display[shift[0]] = display[shift[0]][-shift[1]:]+display[shift[0]][:-shift[1]]
         return display
 
     def parse_input(self, data, display):
         for line in data.split("\n"):
-            if "rect " in line:
+            if "rect" in line:
                 display = self.rect([int(s) for s in re.findall(r'\d+', line)], display)
-            if "rotate row " in line:
-                print(re.findall(r'\d+', line))
-            if "rotate column " in line:
+            if "row" in line:
+                display = self.rotate_row([int(s) for s in re.findall(r'\d+', line)], display)
+            if "column" in line:
                 display = self.rotate_col([int(s) for s in re.findall(r'\d+', line)], display)
         return display
