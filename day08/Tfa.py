@@ -3,7 +3,7 @@ import re
 
 class Tfa:
     def lighted_elements(self, data):
-        display, lighted = [[0 for x in range(50)] for y in range(8)], 0
+        display, lighted = [[0 for x in range(50)] for y in range(6)], 0
         self.parse_input(data, display)
         for row in range(len(display)):
             for col in range(len(display[0])):
@@ -11,12 +11,8 @@ class Tfa:
         return lighted
 
     def rect(self, hw, display):
-        if hw[0] > len(display):
-            hw[0] = len(display)
-        if hw[1] > len(display[0]):
-            hw[1] = len(display[0])
-        for row in range(0, hw[0]):
-            for col in range(0, hw[1]):
+        for row in range(0, hw[1]):
+            for col in range(0, hw[0]):
                 display[row][col] = 1
         return display
 
