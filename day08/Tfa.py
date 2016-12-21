@@ -11,6 +11,10 @@ class Tfa:
         return lighted
 
     def rect(self, hw, display):
+        if hw[0] > len(display):
+            hw[0] = len(display)
+        if hw[1] > len(display[0]):
+            hw[1] = len(display[0])
         for row in range(0, hw[0]):
             for col in range(0, hw[1]):
                 display[row][col] = 1
@@ -31,7 +35,6 @@ class Tfa:
 
     def parse_input(self, data, display):
         for line in data.split("\n"):
-            print(line)
             if "rect" in line:
                 display = self.rect([int(s) for s in re.findall(r'\d+', line)], display)
             if "row" in line:

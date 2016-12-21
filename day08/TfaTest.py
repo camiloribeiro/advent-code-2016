@@ -18,6 +18,20 @@ class TfaTest(unittest.TestCase):
                                                       [1, 1, 1, 0, 0, 0, 0],
                                                       [0, 0, 0, 0, 0, 0, 0]])
 
+    def test_rect_overflow_col(self):
+        tfa = Tfa()
+        display = [[0 for x in range(7)] for y in range(3)]
+        self.assertEquals(tfa.rect([2, 9], display), [[1, 1, 1, 1, 1, 1, 1],
+                                                      [1, 1, 1, 1, 1, 1, 1],
+                                                      [0, 0, 0, 0, 0, 0, 0]])
+
+    def test_rect_overflow_row(self):
+        tfa = Tfa()
+        display = [[0 for x in range(7)] for y in range(3)]
+        self.assertEquals(tfa.rect([5, 3], display), [[1, 1, 1, 0, 0, 0, 0],
+                                                      [1, 1, 1, 0, 0, 0, 0],
+                                                      [1, 1, 1, 0, 0, 0, 0]])
+
     def test_rotate_column(self):
         tfa = Tfa()
         display = [[0 for x in range(7)] for y in range(3)]
