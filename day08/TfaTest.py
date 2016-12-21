@@ -6,7 +6,10 @@ class TfaTest(unittest.TestCase):
 
     def test_lighted_elements(self):
         tfa = Tfa()
-        self.assertEqual(tfa.lighted_elements(), 0)
+        data = "rect 2x3\n" + \
+               "rotate column x=1 by 1\n" + \
+               "rotate row y=0 by 4"
+        self.assertEqual(tfa.lighted_elements(data), 6)
 
     def test_rect(self):
         tfa = Tfa()

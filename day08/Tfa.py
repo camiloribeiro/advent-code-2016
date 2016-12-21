@@ -2,8 +2,9 @@ import re
 
 
 class Tfa:
-    def lighted_elements(self):
+    def lighted_elements(self, data):
         display, lighted = [[0 for x in range(50)] for y in range(8)], 0
+        self.parse_input(data, display)
         for row in range(len(display)):
             for col in range(len(display[0])):
                 lighted += display[row][col]
