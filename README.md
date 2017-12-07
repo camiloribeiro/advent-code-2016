@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/camiloribeiro/advent-code-2016.svg?branch=master)](https://travis-ci.org/camiloribeiro/advent-code-2016)
-[![Code Climate](https://codeclimate.com/github/camiloribeiro/advent-code-2016/badges/gpa.svg)](https://codeclimate.com/github/camiloribeiro/advent-code-2016)
+[![Maintainability](https://api.codeclimate.com/v1/badges/860b54cb88ab28a198cd/maintainability)](https://codeclimate.com/github/camiloribeiro/advent-code-2016/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/camiloribeiro/advent-code-2016/badge.svg?branch=master)](https://coveralls.io/github/camiloribeiro/advent-code-2016?branch=master)
 [![Issue Count](https://codeclimate.com/github/camiloribeiro/advent-code-2016/badges/issue_count.svg)](https://codeclimate.com/github/camiloribeiro/advent-code-2016)
 
